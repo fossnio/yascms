@@ -3,6 +3,7 @@ from sqlalchemy import (Column,
                         String,
                         Integer,
                         ForeignKey)
+from sqlalchemy.schema import Identity
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import relationship
 
@@ -14,7 +15,7 @@ class PageAttachmentModel(BaseObject):
 
     __tablename__ = 'page_attachments'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 上傳時原本的檔案名稱
     original_name = Column(String(100), nullable=False)
@@ -30,7 +31,7 @@ class PageModel(BaseObject):
 
     __tablename__ = 'pages'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 標題
     title = Column(String(100), nullable=False)

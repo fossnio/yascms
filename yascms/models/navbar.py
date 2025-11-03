@@ -3,6 +3,7 @@ from sqlalchemy import (Column,
                         String,
                         Text,
                         ForeignKey)
+from sqlalchemy.schema import Identity
 from sqlalchemy.orm import relationship
 from pyramid_sqlalchemy import BaseObject
 
@@ -15,7 +16,7 @@ class NavbarModel(BaseObject):
     __tablename__ = 'navbar'
 
     # 各導覽列元素的 id，若為 builtin 模組，則統一為 -1 以方便辨識（因為不會存入 db 所以不會有 primary key duplicated 的問題
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 選單名稱
     name = Column(String(50), nullable=False, server_default='')

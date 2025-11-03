@@ -3,6 +3,7 @@ from sqlalchemy import (Column,
                         Integer,
                         String,
                         ForeignKey)
+from sqlalchemy.schema import Identity
 from sqlalchemy.orm import relationship
 from pyramid_sqlalchemy import BaseObject
 
@@ -14,7 +15,7 @@ class EmailModel(BaseObject):
 
     __tablename__ = 'email'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # Email 位址
     address = Column(String(100), nullable=False, unique=True)
@@ -34,7 +35,7 @@ class UserModel(BaseObject):
 
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 名
     first_name = Column(String(20), nullable=False)
@@ -81,7 +82,7 @@ class GroupModel(BaseObject):
 
     __tablename__ = 'groups'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 群組名稱
     name = Column(String(100), nullable=False)

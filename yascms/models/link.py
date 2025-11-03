@@ -6,6 +6,7 @@ from sqlalchemy import (Column,
                         DateTime,
                         Text,
                         ForeignKey)
+from sqlalchemy.schema import Identity
 from sqlalchemy.orm import relationship
 from pyramid_sqlalchemy import BaseObject
 
@@ -15,7 +16,7 @@ class LinkModel(BaseObject):
 
     __tablename__ = 'links'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 標題
     title = Column(String(100), nullable=False, index=True)
@@ -53,7 +54,7 @@ class LinkCategoryModel(BaseObject):
 
     __tablename__ = 'link_categories'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 分類名稱
     name = Column(String(50), unique=True, nullable=False)

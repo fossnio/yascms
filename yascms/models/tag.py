@@ -2,6 +2,7 @@ from pyramid_sqlalchemy import BaseObject
 from sqlalchemy import (Column,
                         Integer,
                         String)
+from sqlalchemy.schema import Identity
 from sqlalchemy.orm import relationship
 
 from yascms.models.association import news_tags_association, pages_tags_association
@@ -12,7 +13,7 @@ class TagModel(BaseObject):
 
     __tablename__ = 'tags'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     name = Column(String(50), unique=True, nullable=False)
 

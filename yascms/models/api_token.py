@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy.schema import Identity
 from pyramid_sqlalchemy import BaseObject
 
 
@@ -7,7 +8,7 @@ class APITokenModel(BaseObject):
 
     __tablename__ = 'api_tokens'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 設定 api token 名稱
     name= Column(String(50), nullable=False, unique=True)

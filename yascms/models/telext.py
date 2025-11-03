@@ -4,6 +4,7 @@ from sqlalchemy import (Column,
                         Integer,
                         String,
                         DateTime)
+from sqlalchemy.schema import Identity
 from pyramid_sqlalchemy import BaseObject
 
 
@@ -12,7 +13,7 @@ class TelExtModel(BaseObject):
 
     __tablename__ = 'telext'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 標題
     title = Column(String(50), nullable=False, index=True)

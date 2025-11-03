@@ -2,6 +2,7 @@ from datetime import datetime
 
 from pyramid_sqlalchemy import BaseObject
 from sqlalchemy import Column, Integer, DateTime, String, ForeignKey
+from sqlalchemy.schema import Identity
 
 
 class AuthLogModel(BaseObject):
@@ -9,7 +10,7 @@ class AuthLogModel(BaseObject):
 
     __tablename__ = 'auth_logs'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # log 紀錄的時間
     datetime = Column(DateTime, nullable=False, default=datetime.now)

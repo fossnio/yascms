@@ -6,6 +6,7 @@ from sqlalchemy import (Column,
                         DateTime,
                         Date,
                         ForeignKey)
+from sqlalchemy.schema import Identity
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import relationship
 from pyramid_sqlalchemy import BaseObject
@@ -18,7 +19,7 @@ class NewsAttachmentModel(BaseObject):
 
     __tablename__ = 'news_attachments'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 上傳時原本的檔案名稱
     original_name = Column(String(100), nullable=False)
@@ -33,7 +34,7 @@ class NewsModel(BaseObject):
 
     __tablename__ = 'news'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 標題
     title = Column(String(100), nullable=False, index=True)
@@ -90,7 +91,7 @@ class NewsCategoryModel(BaseObject):
 
     __tablename__ = 'news_categories'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Identity(always=True), primary_key=True)
 
     # 分類名稱
     name = Column(String(50), unique=True, nullable=False)
