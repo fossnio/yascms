@@ -2,6 +2,7 @@ from pyramid_sqlalchemy import BaseObject
 from sqlalchemy import (Column,
                         String,
                         Integer,
+                        Text,
                         ForeignKey)
 from sqlalchemy.schema import Identity
 from sqlalchemy.dialects.mysql import LONGTEXT
@@ -37,7 +38,7 @@ class PageModel(BaseObject):
     title = Column(String(100), nullable=False)
 
     # 內容
-    content = Column(LONGTEXT, nullable=False, default='')
+    content = Column(Text().with_variant(LONGTEXT, 'mysql'), nullable=False, default='')
 
     # 上傳附件
     attachments = relationship('PageAttachmentModel', backref='page', cascade='all, delete-orphan')
