@@ -6,11 +6,11 @@ import argparse
 import subprocess
 
 
-PIP_VERSION = '25.2'
+PIP_VERSION = '25.3'
 WHEEL_VERSION = '0.45.1'
 # pkg_resources 相依還沒被移除前要維持 setuptools < 81
 SETUPTOOLS_VERSION = '80.9.0'
-ANSIBLE_VERSION = '12.1.0'
+ANSIBLE_VERSION = '13.2.0'
 POETRY_VERSION = '2.2.1'
 
 
