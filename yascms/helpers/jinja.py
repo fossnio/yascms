@@ -11,14 +11,14 @@ def linkify(text):
     safe_text = str(escape(text))
 
     # 這個正則表達式會匹配 http/https 網址
-    url_pattern = r'(https?://[^\s<>"]+)'
+    url_pattern = r'(https?://[a-zA-Z0-9-._~:/?#\[\]@!$&\'()*+,;=%]+)'
 
     def handle_match(m):
         url = m.group(1)
         # 檢查網址結尾是否有標點符號
         trailing_punctuation = ""
         # 這裡可以根據需求增加想要剔除的結尾符號
-        while url and url[-1] in '.,!?;:()，：。？！（）':
+        while url and url[-1] in '.,!?;:()，：。？！（））':
             trailing_punctuation = url[-1] + trailing_punctuation
             url = url[:-1]
         return rf'<a href="{url}" target="_blank" rel="noopener noreferrer" aria-label="前往網頁：{url} (另開新視窗)">{url}</a>{trailing_punctuation}'
