@@ -43,7 +43,7 @@
               {{ news.content|safe }}
             {% else %}
               {% autoescape false %}
-              {{ news.content | e | replace('\n', '<br>') }}
+              {{ news.content | linkify | replace('\n', '<br>') }}
               {% endautoescape %}
             {% endif %}
           </span>
