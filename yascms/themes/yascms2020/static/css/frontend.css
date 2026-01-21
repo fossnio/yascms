@@ -1,14 +1,10 @@
 .footer-bg {
-  background-color: #e2f7ff;
+  background-color: #f8fdff;
 }
 
 .jumbotron-bg {
   background-size: cover;
   background-position: center center;
-}
-
-.bg-trans {
-  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .search-btn-icon {

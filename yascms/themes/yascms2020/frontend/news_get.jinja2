@@ -10,10 +10,9 @@
 {% block page_meta_description %}{{ news.content|replace('\n', ' ') }}{% endblock page_meta_description %}
 {% block content %}
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
+  <ol class="breadcrumb bg-white">
     <li class="breadcrumb-item"><a href="{{ request.route_url('homepage') }}">首頁</a></li>
-    <li class="breadcrumb-item"><a href="{{ request.route_url('news_list') }}">最新消息</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ news.title }}</li>
+    <li class="breadcrumb-item">最新消息</li>
   </ol>
 </nav>
 
@@ -21,7 +20,7 @@
   <div class="row">
     <div class="col">
       <div class="card">
-        <div class="card-header h5">
+        <div class="card-header h5 bg-white">
           <div class="d-flex justify-content-between">
             <div>標題：{{ news.title }}</div>
             {% if news.is_pinned %}
@@ -49,15 +48,15 @@
           </span>
         </div>
         {% if news.attachments %}
-          <div class="card-footer">
+          <div class="card-footer bg-white">
             <div class="card">
-              <div class="card-header">附件</div>
+              <div class="card-header bg-white">附件</div>
               <div class="card-body">
                 <ul class="mb-0">
                   {% for each_attachment in news.attachments %}
                     <li><a href="{{ request.static_path('yascms:uploads/news/'
                                                     ~ news.display_datetime.strftime('%Y/%m/'))
-                                                    ~ each_attachment.real_name }}">{{ each_attachment.original_name }}</a></li>
+                                                    ~ each_attachment.real_name }}" title="附件{{ each_attachment.original_name }}" aria-label="附件{{ each_attachment.original_name }}">{{ each_attachment.original_name }}</a></li>
                   {% endfor %}
                 </ul>
               </div>

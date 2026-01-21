@@ -2,13 +2,13 @@
 {% from 'news_list_macros.jinja2' import paginate with context %}
 {% block content %}
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
+  <ol class="breadcrumb bg-white">
     <li class="breadcrumb-item"><a href="{{ request.route_url('homepage') }}">首頁</a></li>
     {% if news_category %}
       <li class="breadcrumb-item"><a href="{{ request.route_url('news_list') }}">最新消息</a></li>
       <li class="breadcrumb-item">{{ news_category.name }}</li>
     {% else %}
-      <li class="breadcrumb-item active" aria-current="page">最新消息</li>
+      <li class="breadcrumb-item" aria-current="page">最新消息</li>
     {% endif %}
   </ol>
 </nav>
@@ -18,7 +18,7 @@
     <div class="col-12">
       <div class="card mb-3">
         <div class="table-responsive">
-          <table class="table table-hover table-striped text-center mb-0">
+          <table class="table table-hover text-center mb-0">
             <thead>
               <tr>
                 <th scope="col" class="d-none d-md-table-cell">編號</th>

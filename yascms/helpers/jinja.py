@@ -21,7 +21,7 @@ def linkify(text):
         while url and url[-1] in '.,!?;:()，：。？！（））':
             trailing_punctuation = url[-1] + trailing_punctuation
             url = url[:-1]
-        return rf'<a href="{url}" target="_blank" rel="noopener noreferrer" aria-label="前往網頁：{url} (另開新視窗)">{url}</a>{trailing_punctuation}'
+        return rf'<a href="{url}" target="_blank" rel="noopener noreferrer" aria-label="前往網頁：{url} (另開新視窗)" title="前往網頁：{url} (另開新視窗)">{url}</a>{trailing_punctuation}'
 
     processed_text = re.sub(url_pattern, handle_match, safe_text)
     processed_text = processed_text.replace('\n', '<br>')
