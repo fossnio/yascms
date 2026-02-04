@@ -43,12 +43,12 @@
         {% elif navbar.type in (NavbarType.LEAF_NODE, NavbarType.BUILTIN_TELEXT, NavbarType.BUILTIN_LINKS) %}
           {% if loop.depth == 1 %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)"{% endif %}>
+              <a class="nav-link" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
                 {% if navbar.icon %}<i class="bi {{ navbar.icon }}"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right"></i>{% endif %}
               </a>
           {% else %}
             <li>
-              <a class="dropdown-item" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)"{% endif %}>
+              <a class="dropdown-item" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
                 {% if navbar.icon %}<i class="bi {{ navbar.icon }}"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right"></i>{% endif %}
               </a>
           {% endif %}

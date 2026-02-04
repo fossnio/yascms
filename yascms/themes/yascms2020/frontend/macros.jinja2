@@ -92,9 +92,9 @@
 	      <div class="row">
                 {% for each_link in link_entities %}
                   <div class="col-6 col-sm-4 col-md-3 col-lg-2 py-1">
-                    <a href="{{ each_link.url }}" target="_blank" title="{{ each_link.title }} (另開新視窗)">
+                    <a href="{{ each_link.url }}" target="_blank" title="{{ each_link.title }} (另開新視窗)"{% if each_link.icon %} aria-label="{{ each_link.title }}"{% endif %}>
                       {% if each_link.icon %}
-                        <img src="{{ request.static_path('yascms:uploads/links/' ~ each_link.icon) }}" class="img-fluid img-thumbnail align-middle" aria-label="{{ each_link.title }}" alt="{{ each_link.title }}">
+                        <img src="{{ request.static_path('yascms:uploads/links/' ~ each_link.icon) }}" class="img-fluid img-thumbnail align-middle" alt="{{ each_link.title }}">
                       {% else %}
                         <div class="col border">{{ each_link.title }}</div>
                       {% endif %}
