@@ -6,7 +6,7 @@
         <p><a href="tel:+886-2-{{ request.site_config['site_fax'] }}"><i class="bi bi-telephone-fill"></i> 傳真電話：{{ request.site_config['site_fax'] }}</a></p>
         <p><a href="mailto:{{ request.site_config['site_email'] }}"><i class="bi bi-envelope"></i> 學校信箱：{{ request.site_config['site_email'] }}</a></p>
         {% if request.site_config['site_map_url'] %}
-          <address><a href="{{ request.site_config['site_map_url'] }}" target="_blank"><i class="bi bi-map"></i> 學校地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }}</a></address>
+          <address><a href="{{ request.site_config['site_map_url'] }}" target="_blank" title="學校地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }} (另開新視窗)"><i class="bi bi-map"></i> 學校地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }}</a></address>
         {% endif %}
       </div>
       <div class="col d-none d-sm-block">
