@@ -1,108 +1,112 @@
 {% macro generate_news_block(block_name, icon, news_entities) %}
-  <div class="jumbotron jumbotron-fluid mb-3 p-2" style="background-color:#3498db;">
-    <div class="container">
-      <p class="h1 display-5 text-center text-white">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</p>
-    </div>
-  </div>
-
   <div class="container mb-3">
     <div class="row">
       <div class="col-12">
-        <div class="card mb-3">
-        <div class="table-responsive">
-          <table class="table table-hover text-center mb-0">
-            <thead>
-              <tr>
-                <th scope="col" class="d-none d-md-table-cell">編號</th>
-                <th scope="col" class="d-none d-md-table-cell">時間</th>
-                <th scope="col" class="d-none d-sm-table-cell">發佈單位</th>
-                <th scope="col" class="d-none d-sm-table-cell">類別</th>
-                <th scope="col" class="d-none d-sm-table-cell">標題</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for each_news in news_entities %}
-                <tr>
-                  <th class="d-none d-md-table-cell" scope="row">{{ loop.index }}</th>
-                  <td class="d-none d-md-table-cell">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</td>
-                  <td class="d-none d-sm-table-cell">{{ each_news.group.name }}</td>
-                  <td class="d-none d-sm-table-cell">{{ each_news.category.name }}</td>
-                  <td class="p-0">
-                    <a class="d-block" style="padding: .75rem;" href="{{ request.route_url('news_get', news_id=each_news.id) }}">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span>{% if each_news.is_pinned and today >= each_news.pinned_start_datetime and today < each_news.pinned_end_datetime %}<i class="bi bi-pin"></i> {% endif %}{{ each_news.title|truncate(40) }}</span>
-                        <span class="badge badge-pill badge-primary d-md-none">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</span>
-                      </div>
-                    </a>
-                  </td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+        <div class="card my-3 pb-3">
+	  <div class="card-header">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</div>
+	  <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-center mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class="d-none d-md-table-cell">編號</th>
+                    <th scope="col" class="d-none d-md-table-cell">時間</th>
+                    <th scope="col" class="d-none d-sm-table-cell">發佈單位</th>
+                    <th scope="col" class="d-none d-sm-table-cell">類別</th>
+                    <th scope="col" class="d-none d-sm-table-cell">標題</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for each_news in news_entities %}
+                    <tr>
+                      <th class="d-none d-md-table-cell" scope="row">{{ loop.index }}</th>
+                      <td class="d-none d-md-table-cell">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</td>
+                      <td class="d-none d-sm-table-cell">{{ each_news.group.name }}</td>
+                      <td class="d-none d-sm-table-cell">{{ each_news.category.name }}</td>
+                      <td class="p-0">
+                        <a class="d-block" style="padding: .75rem;" href="{{ request.route_url('news_get', news_id=each_news.id) }}">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <span>{% if each_news.is_pinned and today >= each_news.pinned_start_datetime and today < each_news.pinned_end_datetime %}<i class="bi bi-pin"></i> {% endif %}{{ each_news.title|truncate(40) }}</span>
+                            <span class="badge badge-pill badge-primary d-md-none">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</span>
+                          </div>
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+	  </div>
+          <div class="col-12 text-center"><a class="btn btn-primary btn-lg" href="{{ request.route_url('news_list') }}">顯示全部最新消息</a></div>
         </div>
       </div>
-      </div>
-      <div class="col-12 text-center"><a class="btn btn-primary btn-lg" href="{{ request.route_url('news_list') }}">顯示全部最新消息</a></div>
     </div>
   </div>
 {% endmacro %}
 
 {% macro generate_page_block(block_name, icon, page_entity) %}
-  <div class="jumbotron jumbotron-fluid mb-3 p-2" style="background-color:#2980b9;">
-    <div class="container">
-      <p class="h1 display-5 text-center text-white">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</p>
-    </div>
-  </div>
-
   <div class="container mb-3">
     <div class="row">
       <div class="col-12">
-        {{ page_entity.content|safe }}
+        <div class="card my-3 pb-3">
+          <div class="card-header">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</div>
+	  <div class="card-body">
+            {{ page_entity.content|safe }}
+	  </div>
+	</div>
       </div>
     </div>
   </div>
 {% endmacro %}
 
 {% macro generate_telext_block(block_name, icon, telext_entities) %}
-  <div class="jumbotron jumbotron-fluid mb-3 p-2" style="background-color: #2ecc71;">
-    <div class="container">
-      <p class="h1 display-5 text-center text-white">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</p>
-    </div>
-  </div>
-
   <div class="container mb-3">
     <div class="row">
-      {% for each_telext in telext_entities %}
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-1">
-          <a href="tel:02{{ request.site_config['site_phone'] }},{{ each_telext.ext }}" class="btn btn-outline-success btn-lg btn-block">{{ each_telext.title }} ({{ each_telext.ext }})</a>
-        </div>
-      {% endfor %}
+      <div class="col-12">
+        <div class="card my-3 pb-3">
+	  <div class="card-header">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</div>
+	  <div class="card-body">
+	    <div class="row">
+              {% for each_telext in telext_entities %}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-1">
+                  <a href="tel:02{{ request.site_config['site_phone'] }},{{ each_telext.ext }}" class="btn btn-outline-primary btn-lg btn-block">{{ each_telext.title }} ({{ each_telext.ext }})</a>
+                </div>
+              {% endfor %}
+	    </div>
+	  </div>
+          <div class="col-12 text-center"><a class="btn btn-primary btn-lg" href="{{ request.route_path('telext') }}">觀看完整分機表</a></div>
+	</div>
+      </div>
     </div>
-    <div class="col-12 text-center mt-2"><a class="btn btn-lg text-white" href="{{ request.route_path('telext') }}" style="background-color: #2ecc71;">觀看完整分機表</a></div>
   </div>
 {% endmacro %}
 
 {% macro generate_links_block(block_name, icon, link_entities) %}
-  <div class="jumbotron jumbotron-fluid mb-3 p-2 d-none d-sm-block" style="background-color: #e67e22;">
-    <div class="container">
-      <p class="h1 display-5 text-center text-white">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</p>
-    </div>
-  </div>
-
   <div class="container mb-3 d-none d-sm-block">
     <div class="row text-center align-items-center">
-      {% for each_link in link_entities %}
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2 py-1">
-          <a href="{{ each_link.url }}" target="_blank">
-	    {% if each_link.icon %}
-	      <img src="{{ request.static_path('yascms:uploads/links/' ~ each_link.icon) }}" class="img-fluid img-thumbnail align-middle" aria-label="{{ each_link.title }}" alt="{{ each_link.title }}">
-	    {% else %}
-	      <div class="col border">{{ each_link.title }}</div>
-	    {% endif %}
-	  </a>
-        </div>
-      {% endfor %}
+      <div class="row">
+        <div class="col-12">
+	  <div class="card my-3 pb-3">
+	    <div class="card-header">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ block_name }}</div>
+	    <div class="card-body">
+	      <div class="row">
+                {% for each_link in link_entities %}
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 py-1">
+                    <a href="{{ each_link.url }}" target="_blank">
+                      {% if each_link.icon %}
+                        <img src="{{ request.static_path('yascms:uploads/links/' ~ each_link.icon) }}" class="img-fluid img-thumbnail align-middle" aria-label="{{ each_link.title }}" alt="{{ each_link.title }}">
+                      {% else %}
+                        <div class="col border">{{ each_link.title }}</div>
+                      {% endif %}
+                    </a>
+                  </div>
+                {% endfor %}
+	      </div>
+	    </div>
+            <div class="col-12 text-center"><a class="btn btn-primary btn-lg" href="{{ request.route_path('links') }}">觀看完整好站連結</a></div>
+	  </div>
+	</div>
+      </div>
     </div>
-    <div class="col-12 text-center mt-2"><a class="btn btn-lg text-white" href="{{ request.route_path('links') }}" style="background-color: #e67e22;">觀看完整好站連結</a></div>
   </div>
 {% endmacro %}

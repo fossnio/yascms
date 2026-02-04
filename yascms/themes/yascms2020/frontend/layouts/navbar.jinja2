@@ -43,12 +43,12 @@
         {% elif navbar.type in (NavbarType.LEAF_NODE, NavbarType.BUILTIN_TELEXT, NavbarType.BUILTIN_LINKS) %}
           {% if loop.depth == 1 %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank"{% endif %}>
+              <a class="nav-link" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)"{% endif %}>
                 {% if navbar.icon %}<i class="bi {{ navbar.icon }}"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right"></i>{% endif %}
               </a>
           {% else %}
             <li>
-              <a class="dropdown-item" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank"{% endif %}>
+              <a class="dropdown-item" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)"{% endif %}>
                 {% if navbar.icon %}<i class="bi {{ navbar.icon }}"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right"></i>{% endif %}
               </a>
           {% endif %}
@@ -77,9 +77,9 @@
     <form class="form-inline my-2 my-lg-0" action="{{ 'search_results'|route_path }}" method="get">
       <input type="hidden" name="key" value="content">
       <div class="input-group">
-        <input class="form-control py-2" type="text" placeholder="搜尋內容" id="search-text" name="value" title="search-content">
+        <input class="form-control py-2" type="text" id="search-text" name="value" title="search-content">
         <span class="input-group-append bg-white">
-          <input type="submit" value="搜尋" class="btn btn-outline-secondary border-0 search-btn-icon">
+          <input type="submit" value="搜尋" class="btn border-0 search-btn-icon">
         </span>
       </div>
     </form>

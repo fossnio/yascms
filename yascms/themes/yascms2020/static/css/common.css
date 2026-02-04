@@ -28,3 +28,6 @@ body {
   width: 170px;
 }
 
+.container-fluid {
+    overflow-x: hidden;
+}
