@@ -1,6 +1,32 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5 !important;
+  font-size: 1rem;
+}
+
+p, div {
+    margin-bottom: 2em !important;
+}
+
+.container, .container-fluid, .row, .col, .col-lg, 
+.card, .table-responsive, .sidebar, .main-content {
+    height: auto !important;
+    min-height: min-content;
+    overflow: visible !important;
+}
+
+article, .main-content p, .table td {
+    letter-spacing: 0.14em;
+    word-spacing: 0.16em;
+}
+
+.nav-item p, .nav-link, .navbar-brand {
+    margin-bottom: 0 !important;
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
 }
 
 @media (min-width: 992px) {

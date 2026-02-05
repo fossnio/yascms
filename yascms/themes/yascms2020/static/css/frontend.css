@@ -40,3 +40,18 @@ a, .btn-outline-primary {
     color: #000000;
     opacity: 1;
 }
+
+.table th, .table td {
+    white-space: nowrap; 
+}
+
+.table td:last-child {
+    white-space: normal;
+    word-break: break-all;
+    min-width: 300px;
+}
+
+.table th[scope="col"]:nth-child(1) { width: 60px; }
+.table th[scope="col"]:nth-child(2) { width: 120px; }
+.table th[scope="col"]:nth-child(3) { width: 100px; }
+.table th[scope="col"]:nth-child(4) { width: 100px; }

@@ -23,12 +23,10 @@
                       <td class="d-none d-md-table-cell">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</td>
                       <td class="d-none d-sm-table-cell">{{ each_news.group.name }}</td>
                       <td class="d-none d-sm-table-cell">{{ each_news.category.name }}</td>
-                      <td class="p-0">
-                        <a class="d-block" style="padding: .75rem;" href="{{ request.route_url('news_get', news_id=each_news.id) }}">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <span>{% if each_news.is_pinned and today >= each_news.pinned_start_datetime and today < each_news.pinned_end_datetime %}<i class="bi bi-pin"></i> {% endif %}{{ each_news.title|truncate(40) }}</span>
-                            <span class="badge badge-pill badge-primary d-md-none">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</span>
-                          </div>
+                      <td class="p-0" style="height: 1px;">
+                        <a class="d-flex align-items-center h-100 w-100 p-2" href="{{ request.route_url('news_get', news_id=each_news.id) }}">
+                          <span class="text-left">{% if each_news.is_pinned and today >= each_news.pinned_start_datetime and today < each_news.pinned_end_datetime %}<i class="bi bi-pin"></i> {% endif %}{{ each_news.title|truncate(40) }}</span>
+                          <span class="badge badge-pill badge-primary d-md-none">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</span>
                         </a>
                       </td>
                     </tr>
