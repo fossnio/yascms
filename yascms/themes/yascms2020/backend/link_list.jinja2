@@ -35,7 +35,7 @@
                   <th scope="row" class="d-none d-md-table-cell">{{ loop.index + (page_number - 1) * quantity_per_page }}</th>
                   <td class="d-none d-md-table-cell">{{ each_link.publication_datetime }}</td>
                   <td class="d-none d-md-table-cell">{{ each_link.category.name }}</td>
-                  <td class="d-table-cell"><a href="#">{% if each_link.is_pinned %}<i class="bi bi-pin"></i> {% endif %}{{ each_link.title }}</a></td>
+                  <td class="d-table-cell"><a href="#">{% if each_link.is_pinned %}<i class="bi bi-pin" aria-hidden="true"></i><span class="sr-only">[置頂]</span> {% endif %}{{ each_link.title }}</a></td>
                   <td class="d-none d-md-table-cell"><a href="#">{{ each_link.group.name }}</a></td>
                   <td class="d-table-cell"><a href="{{ each_link.url }}"><img width="120" src="{{ request.static_path('yascms:uploads/links/' ~ each_link.icon) }}"></a></td>
                   <td class="d-table-cell">

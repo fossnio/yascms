@@ -10,7 +10,7 @@
       {% if request.session['is_admin'] %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarSystemConfigDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-gear-wide-connected"></i> 系統設定
+            <i class="bi bi-gear-wide-connected" aria-hidden="true"></i> 系統設定
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarSystemConfigDropdown">
             <li><a class="dropdown-item" href="{{ request.route_url('backend_site_config_edit') }}">網站設定</a></li>
@@ -20,7 +20,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarThemeConfigDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-layout-text-sidebar"></i> 樣板管理
+            <i class="bi bi-layout-text-sidebar" aria-hidden="true"></i> 樣板管理
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarThemeConfigDropdown">
             <li><a class="dropdown-item" href="{{ request.route_url('backend_theme_config_list') }}">樣板列表</a></li>
@@ -29,7 +29,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-person"></i> 使用者管理
+            <i class="bi bi-person" aria-hidden="true"></i> 使用者管理
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarUserDropdown">
             <li><a class="dropdown-item" href="{{ request.route_path('backend_user_list') }}">使用者列表</a></li>
@@ -38,7 +38,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarGroupDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-people-fill"></i> 群組管理
+            <i class="bi bi-people-fill" aria-hidden="true"></i> 群組管理
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarGroupDropdown">
             <li><a class="dropdown-item" href="{{ request.route_path('backend_group_list') }}">群組列表</a></li>
@@ -47,7 +47,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="bi bi-menu-button-wide"></i> 導覽列管理
+            <i class="bi bi-menu-button-wide" aria-hidden="true"></i> 導覽列管理
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarNavbarDropdown">
             <li><a class="dropdown-item" href="{{ request.route_path('backend_navbar_list') }}">導覽列列表</a></li>
@@ -57,7 +57,7 @@
       {% endif %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarNewsDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <i class="bi bi-megaphone"></i> 最新消息
+          <i class="bi bi-megaphone" aria-hidden="true"></i> 最新消息
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarNewsDropdown">
           <li><a class="dropdown-item" href="{{ request.route_url('backend_news_create') }}">建立最新消息</a></li>
@@ -70,7 +70,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarPageDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <i class="bi bi-card-text"></i> 單一頁面
+          <i class="bi bi-card-text" aria-hidden="true"></i> 單一頁面
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarPageDropdown">
           <li><a class="dropdown-item" href="{{ request.route_url('backend_page_list') }}">單一頁面列表</a></li>
@@ -82,7 +82,7 @@
       {% if request.session['is_admin'] %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarTelExtDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <i class="bi bi-telephone"></i> 分機表
+          <i class="bi bi-telephone" aria-hidden="true"></i> 分機表
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarTelExtDropdown">
           <li><a class="dropdown-item" href="{{ request.route_url('backend_telext_list') }}">分機列表</a></li>
@@ -92,7 +92,7 @@
       {% endif %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarLinkDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <i class="bi bi-link-45deg"></i> 好站連結
+          <i class="bi bi-link-45deg" aria-hidden="true"></i> 好站連結
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarLinkDropdown">
           <li><a class="dropdown-item" href="{{ request.route_url('backend_link_list') }}">好站連結列表</a></li>
@@ -105,7 +105,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarAuthLogsDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <i class="bi bi-camera-video"></i> 登出入紀錄
+          <i class="bi bi-camera-video" aria-hidden="true"></i> 登出入紀錄
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarTagsDropdown">
           {% if request.session['is_admin'] %}
@@ -115,7 +115,7 @@
         </ul>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarAccountDropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person"></i>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarAccountDropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person" aria-hidden="true"></i>
           {{ request.session['first_name']}}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarAccountDropdown">

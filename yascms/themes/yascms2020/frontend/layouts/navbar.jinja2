@@ -44,12 +44,12 @@
           {% if loop.depth == 1 %}
             <li class="nav-item">
               <a class="nav-link" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
-                {% if navbar.icon %}<i class="bi {{ navbar.icon }}"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right"></i>{% endif %}
+                {% if navbar.icon %}<i class="bi {{ navbar.icon }}" aria-hidden="true"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>{% endif %}
               </a>
           {% else %}
             <li>
               <a class="dropdown-item" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
-                {% if navbar.icon %}<i class="bi {{ navbar.icon }}"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right"></i>{% endif %}
+                {% if navbar.icon %}<i class="bi {{ navbar.icon }}" aria-hidden="true"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>{% endif %}
               </a>
           {% endif %}
             </li>
@@ -59,18 +59,18 @@
       {% endfor %}
       {% if request.session['account'] %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarAccountDropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-fill"></i>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarAccountDropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-fill" aria-hidden="true"></i>
             {{ request.session['first_name']}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarAccountDropdown">
-            <li><a class="dropdown-item" href="{{ request.route_url('backend_homepage') }}"><i class="bi bi-gear"></i> 後台管理</a></li>
+            <li><a class="dropdown-item" href="{{ request.route_url('backend_homepage') }}"><i class="bi bi-gear" aria-hidden="true"></i> 後台管理</a></li>
             <li class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ 'logout'|route_path }}"><i class="bi bi-box-arrow-left"></i> 登出</a></li>
+            <li><a class="dropdown-item" href="{{ 'logout'|route_path }}"><i class="bi bi-box-arrow-left" aria-hidden="true"></i> 登出</a></li>
           </ul>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ 'login'|route_path }}"><i class="bi bi-box-arrow-in-right"></i> 登入</a>
+          <a class="nav-link" href="{{ 'login'|route_path }}"><i class="bi bi-box-arrow-in-right" aria-hidden="true"></i> 登入</a>
         </li>
       {% endif %}
     </ul>

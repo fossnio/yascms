@@ -1,0 +1,110 @@
+{% extends 'layouts/master.jinja2' %}
+
+{% macro sitemap_link(navbar, href, label=None) -%}
+  {% set link_label = label or navbar.name %}
+  {% set opens_new_window = navbar.is_href_blank is defined and navbar.is_href_blank %}
+  <a href="{{ href }}" title="{{ link_label }}{% if opens_new_window %} (另開新視窗){% endif %}"{% if opens_new_window %} target="_blank" rel="noopener noreferrer" aria-label="{{ link_label }} (另開新視窗)"{% endif %}>
+    {% if navbar.icon is defined and navbar.icon %}<i class="bi {{ navbar.icon }}" aria-hidden="true"></i> {% endif %}{{ link_label }}{% if opens_new_window %} <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>{% endif %}
+  </a>
+{%- endmacro %}
+
+{% block page_title %}網站導覽 - {{ request.site_config['site_name'] }}{% endblock page_title %}
+
+{% block page_css %}
+  <style>
+    .sitemap-tree,
+    .sitemap-tree ul {
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .sitemap-tree ul {
+      border-left: 1px solid #dee2e6;
+      margin-top: .5rem;
+      margin-left: .75rem;
+      padding-left: 1rem;
+    }
+
+    .sitemap-tree li {
+      margin-bottom: .5rem;
+    }
+
+    .sitemap-tree a,
+    .sitemap-tree .sitemap-node-label {
+      display: inline-block;
+      padding: .125rem 0;
+    }
+
+    .sitemap-tree .sitemap-node-label {
+      font-weight: 700;
+    }
+  </style>
+{% endblock page_css %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="{{ request.route_url('homepage') }}">首頁</a></li>
+    <li class="breadcrumb-item" aria-current="page">網站導覽</li>
+  </ol>
+</nav>
+
+<main class="container py-4" id="main-content" accesskey="C">
+  <h1 class="h2 mb-4">網站導覽</h1>
+
+  <section class="mb-4" aria-labelledby="accessibility-principles-title">
+    <h2 class="h4" id="accessibility-principles-title">無障礙網頁設計原則</h2>
+    <p>本網站依「無障礙網頁設計原則」建置，包括：</p>
+    <ol class="pl-4">
+      <li>所有的頁面都可以用鍵盤操作，不限於使用滑鼠。</li>
+      <li>網站設置導盲磚快速鍵（:::），使用者可快速到達各主要區塊。</li>
+      <li>網頁圖片均標示適當的替代文字說明。</li>
+      <li>連結項目上加上提示文字，讓使用者了解連結目的。</li>
+    </ol>
+  </section>
+
+  <section class="mb-5" aria-labelledby="accesskey-title">
+    <h2 class="h4" id="accesskey-title">快速鍵﹝Accesskey﹞設定</h2>
+    <p>本網站之快速鍵﹝Accesskey﹞設定如下：</p>
+    <ul class="list-unstyled">
+      <li><kbd>Alt+C</kbd>：中央內容區塊，為本頁主要內容區。</li>
+      <li><kbd>Alt+L</kbd>：頁面左方功能區塊（次要選單）。</li>
+      <li><kbd>Alt+S</kbd>：網站搜尋。</li>
+      <li><kbd>Alt+Z</kbd>：頁面尾端功能區塊。</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="sitemap-title">
+    <h2 class="h4" id="sitemap-title">網站導覽列表</h2>
+    <nav aria-label="網站導覽列表">
+      <ul class="sitemap-tree">
+        {% for navbar in navbar_trees.descendants recursive %}
+          {% if navbar.type == NavbarType.DROPDOWN_DIVIDER %}
+            <li aria-hidden="true"><hr></li>
+          {% elif navbar.type == NavbarType.TREE_NODE or navbar.type == NavbarType.BUILTIN_NEWS %}
+            <li>
+              <span class="sitemap-node-label">
+                {% if navbar.icon is defined and navbar.icon %}<i class="bi {{ navbar.icon }}" aria-hidden="true"></i> {% endif %}{{ navbar.name }}
+              </span>
+              {% if navbar.descendants %}
+                <ul>
+                  {{ loop(navbar.descendants) }}
+                </ul>
+              {% endif %}
+            </li>
+          {% elif navbar.type == NavbarType.BUILTIN_NEWS_SUBTYPE %}
+            <li>{{ sitemap_link(navbar, request.route_url('news_list', _query={'c': navbar.category_id})) }}</li>
+          {% elif navbar.type == NavbarType.BUILTIN_NEWS_ALL %}
+            <li>{{ sitemap_link(navbar, request.route_url('news_list'), '顯示全部') }}</li>
+          {% elif navbar.type in (NavbarType.LEAF_NODE, NavbarType.BUILTIN_TELEXT, NavbarType.BUILTIN_LINKS) %}
+            <li>{{ sitemap_link(navbar, navbar.url) }}</li>
+          {% endif %}
+        {% else %}
+          <li>目前沒有可顯示的導覽項目。</li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </section>
+</main>
+{% endblock content %}
