@@ -5,8 +5,8 @@ body {
   font-size: 1rem;
 }
 
-p, div {
-    margin-bottom: 2em !important;
+p {
+    margin-bottom: 1em;
 }
 
 .container, .container-fluid, .row, .col, .col-lg, 
@@ -19,6 +19,20 @@ p, div {
 article, .main-content p, .table td {
     letter-spacing: 0.14em;
     word-spacing: 0.16em;
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus,
+.btn:focus,
+.dropdown-item:focus,
+.nav-link:focus {
+    outline: 3px solid #ffbf47 !important;
+    outline-offset: 2px;
+    box-shadow: none !important;
 }
 
 .nav-item p, .nav-link, .navbar-brand {

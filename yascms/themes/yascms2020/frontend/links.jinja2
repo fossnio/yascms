@@ -1,9 +1,9 @@
 {% extends 'layouts/master.jinja2' %}
 {% from 'yascms:themes/' ~ request.effective_theme_name ~ '/macros.jinja2' import paginate with context %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid mb-3 p-2" style="background-color: #e67e22;">
+<div class="jumbotron jumbotron-fluid mb-3 p-2 links-title-band">
   <div class="container">
-    <p class="h1 display-5 text-center text-white"><i class="bi bi-link-45deg"></i> 好站連結</p>
+    <h1 class="display-5 text-center text-white"><i class="bi bi-link-45deg" aria-hidden="true"></i> 好站連結</h1>
   </div>
 </div>
 <div class="container">
@@ -17,7 +17,7 @@
           <div class="card-body d-flex flex-wrap align-items-center">
             {% for each_link in each_category.links %}
               <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                <a href="{{ each_link.url }}" target="_blank" title="{{ each_link.title }} (另開新視窗)"{% if each_link.icon %} aria-label="{{ each_link.title }}"{% endif %}>
+                <a href="{{ each_link.url }}" target="_blank" rel="noopener noreferrer" title="{{ each_link.title }} (另開新視窗)" aria-label="{{ each_link.title }} (另開新視窗)">
                 {% if each_link.icon %}
                   <img src="{{ request.static_path('yascms:uploads/links/' ~ each_link.icon) }}" class="img-fluid img-thumbnail align-middle" alt="{{ each_link.title }}">
                 {% else %}

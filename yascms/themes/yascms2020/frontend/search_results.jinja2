@@ -30,7 +30,12 @@
                   <td class="d-none d-md-table-cell">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</td>
                   <td class="d-none d-sm-table-cell">{{ each_news.group.name }}</td>
                   <td class="d-none d-sm-table-cell">{{ each_news.category.name }}</td>
-                  <td class="p-0"><a class="d-block w-100 h-100" style="padding: .75rem;" href="{{ request.route_url('news_get', news_id=each_news.id) }}"><li class="d-flex justify-content-between align-items-center"><span>{{ each_news.title }}</span><span class="badge badge-pill badge-primary d-md-none">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</span></li></a></td>
+                  <td class="p-0">
+                    <a class="d-flex justify-content-between align-items-center w-100 h-100 p-2" href="{{ request.route_url('news_get', news_id=each_news.id) }}">
+                      <span class="text-left">{{ each_news.title }}</span>
+                      <span class="badge badge-pill badge-primary d-md-none">{{ each_news.display_datetime.strftime('%Y-%m-%d') }}</span>
+                    </a>
+                  </td>
                 </tr>
               {% endfor %}
             </tbody>

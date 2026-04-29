@@ -3,16 +3,18 @@
   <div class="container">
     <div class="row">
       <div class="col py-3">
-        <p><a href="tel:+886-2-{{ request.site_config['site_phone'] }}" title="聯絡電話：{{ request.site_config['site_phone'] }} (開啟電話 App 撥打)"><i class="bi bi-telephone"></i> 聯絡電話：{{ request.site_config['site_phone'] }}</a></p>
-        <p><i class="bi bi-telephone-fill"></i> 傳真電話：{{ request.site_config['site_fax'] }}</p>
-        <p><a href="mailto:{{ request.site_config['site_email'] }}" title="學校信箱：{{ request.site_config['site_email'] }} (開啟 Email App 撰寫)"><i class="bi bi-envelope"></i> 學校信箱：{{ request.site_config['site_email'] }}</a></p>
+        <p><a href="tel:+886-2-{{ request.site_config['site_phone'] }}" title="聯絡電話：{{ request.site_config['site_phone'] }} (開啟電話 App 撥打)"><i class="bi bi-telephone" aria-hidden="true"></i> 聯絡電話：{{ request.site_config['site_phone'] }}</a></p>
+        <p><i class="bi bi-telephone-fill" aria-hidden="true"></i> 傳真電話：{{ request.site_config['site_fax'] }}</p>
+        <p><a href="mailto:{{ request.site_config['site_email'] }}" title="學校信箱：{{ request.site_config['site_email'] }} (開啟 Email App 撰寫)"><i class="bi bi-envelope" aria-hidden="true"></i> 學校信箱：{{ request.site_config['site_email'] }}</a></p>
         {% if request.site_config['site_map_url'] %}
-          <address><a href="{{ request.site_config['site_map_url'] }}" target="_blank" title="學校地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }} (另開新視窗)"><i class="bi bi-map"></i> 學校地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }}</a></address>
+          <address><a href="{{ request.site_config['site_map_url'] }}" target="_blank" rel="noopener noreferrer" title="學校地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }} (另開新視窗)"><i class="bi bi-map" aria-hidden="true"></i> 學校地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }}</a></address>
         {% endif %}
       </div>
-      <div class="col d-none d-sm-block">
-        <a href="{{ request.site_config['site_map_url'] }}" target="_blank" title="Google Map 地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }} (另開新視窗)"><img class="img-fluid" alt="臺北市中山區濱江國小 Google 地圖" src="/google_map.png"></a>
-      </div>
+      {% if request.site_config['site_map_url'] %}
+        <div class="col d-none d-sm-block">
+          <a href="{{ request.site_config['site_map_url'] }}" target="_blank" rel="noopener noreferrer" title="Google Map 地址：{{ request.site_config['site_zip'] }} {{ request.site_config['site_address'] }} (另開新視窗)"><img class="img-fluid" alt="{{ request.site_config['site_name'] }} Google 地圖" src="/google_map.png"></a>
+        </div>
+      {% endif %}
     </div>
     <div class="row my-2">
       <div class="col text-center">© 2019-2021 {{ request.site_config['site_name'] }}</div>

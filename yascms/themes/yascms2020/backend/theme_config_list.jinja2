@@ -45,7 +45,7 @@
                         <a class="btn btn-primary mx-1" href="{{ request.route_url('backend_theme_config_general_edit', theme_name=each_theme_config.name) }}">一般設定</a>
                         <a class="btn btn-primary mx-1" href="{{ request.route_url('backend_theme_config_homepage_items_order_edit', theme_name=each_theme_config.name) }}">首頁物件順序設定</a>
                         <a class="btn btn-primary mx-1" href="{{ request.route_url('backend_theme_config_banners_edit', theme_name=each_theme_config.name) }}">橫幅設定</a>
-                        <a class="btn btn-warning mx-1" href="{{ request.route_url('homepage', _query={'override_theme_name': each_theme_config.name}) }}" target="_blank">預覽樣板</a>
+                        <a class="btn btn-warning mx-1" href="{{ request.route_url('homepage', _query={'override_theme_name': each_theme_config.name}) }}" target="_blank" rel="noopener noreferrer" title="預覽樣板 {{ each_theme_config.name }} (另開新視窗)">預覽樣板</a>
                         <a class="btn btn-danger mx-1" href="{{ request.route_url('backend_theme_config_delete', theme_name=each_theme_config.name) }}">刪除</a>
                       {% else %}
                         <a class="btn btn-primary mx-1" href="{{ request.route_url('backend_theme_config_general_edit', theme_name=each_theme_config.name) }}">一般設定</a>

@@ -1,9 +1,9 @@
 {% extends 'layouts/master.jinja2' %}
 {% from 'yascms:themes/' ~ request.effective_theme_name ~ '/macros.jinja2' import paginate with context %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid mb-3 p-2" style="background-color: #2ecc71;">
+<div class="jumbotron jumbotron-fluid mb-3 p-2 telext-title-band">
   <div class="container">
-    <p class="h1 display-5 text-center text-white"><i class="bi bi-telephone"></i> 常用分機</a></p>
+    <h1 class="display-5 text-center text-white"><i class="bi bi-telephone" aria-hidden="true"></i> 常用分機</h1>
   </div>
 </div>
 <div class="container">

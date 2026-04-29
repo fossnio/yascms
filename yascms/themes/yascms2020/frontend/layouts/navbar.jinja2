@@ -3,7 +3,7 @@
   <a class="navbar-brand d-flex flex-column align-items-center mx-auto" href="{{ request.route_url('homepage') }}"><img class="w-75 d-lg-block d-none" src="{{ 'yascms:webroot/logo.png'|static_path }}" alt="網站 logo">{{ request.site_config['site_name'] }}</a>
   <div class="navbar-min-width"></div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    aria-controls="navbarContent" aria-expanded="false" aria-label="展開或收合主選單">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarContent">
@@ -19,7 +19,7 @@
               <a class="dropdown-item dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">
           {% endif %}
           {% if navbar.icon -%}
-            <i class="bi {{ navbar.icon }}"></i> {{ navbar.name }}
+            <i class="bi {{ navbar.icon }}" aria-hidden="true"></i> {{ navbar.name }}
           {% else %}
                 {{ navbar.name }}
           {%- endif %}
@@ -44,12 +44,12 @@
         {% elif navbar.type in (NavbarType.LEAF_NODE, NavbarType.BUILTIN_TELEXT, NavbarType.BUILTIN_LINKS) %}
           {% if loop.depth == 1 %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
+              <a class="nav-link" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" rel="noopener noreferrer" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
                 {% if navbar.icon %}<i class="bi {{ navbar.icon }}" aria-hidden="true"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>{% endif %}
               </a>
           {% else %}
             <li>
-              <a class="dropdown-item" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
+              <a class="dropdown-item" href="{{ navbar.url }}"{% if navbar.is_href_blank %} target="_blank" rel="noopener noreferrer" title="{{ navbar.name }} (另開新視窗)" aria-label="{{ navbar.name }} (另開新視窗)"{% endif %}>
                 {% if navbar.icon %}<i class="bi {{ navbar.icon }}" aria-hidden="true"></i> {% endif %}{{ navbar.name }}{% if navbar.is_href_blank %} <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>{% endif %}
               </a>
           {% endif %}

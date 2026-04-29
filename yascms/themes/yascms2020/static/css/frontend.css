@@ -8,7 +8,7 @@
 }
 
 .slogan-block {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.68);
 }
 
 .search-btn-icon {
@@ -30,15 +30,57 @@ a, .btn-outline-primary {
 
 .btn-primary {
     background-color: #006fe8;
+    border-color: #006fe8;
 }
 
 .bg-primary {
     background-color: #006ee5 !important;
 }
 
-.form-control, {
+.form-control {
     color: #000000;
     opacity: 1;
+}
+
+.badge-primary {
+    background-color: #005bbd;
+    color: #ffffff;
+}
+
+.btn-info {
+    background-color: #006d7c;
+    border-color: #006d7c;
+    color: #ffffff;
+}
+
+.btn-danger {
+    background-color: #b21f2d;
+    border-color: #b21f2d;
+    color: #ffffff;
+}
+
+.btn-outline-success {
+    color: #0f6b2f;
+    border-color: #0f6b2f;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+    background-color: #0f6b2f;
+    border-color: #0f6b2f;
+    color: #ffffff;
+}
+
+.page-title-band {
+    background-color: #1f6f9f;
+}
+
+.links-title-band {
+    background-color: #9a4d00;
+}
+
+.telext-title-band {
+    background-color: #1f7a44;
 }
 
 .table th, .table td {

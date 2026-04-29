@@ -1,9 +1,9 @@
 {% extends 'layouts/master.jinja2' %}
 {% from 'yascms:themes/' ~ request.effective_theme_name ~ '/macros.jinja2' import paginate with context %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid mb-3 p-2" style="background-color:#2980b9;">
+<div class="jumbotron jumbotron-fluid mb-3 p-2 page-title-band">
   <div class="container">
-    <p class="h1 display-5 text-center text-white">{{ page.title }}</p>
+    <h1 class="display-5 text-center text-white">{{ page.title }}</h1>
   </div>
 </div>
 <div class="container">
@@ -18,7 +18,7 @@
           <div class="card-body">
             <ul class="mb-0">
               {% for each_attachment in page.attachments %}
-	        <li><a href="{{ request.static_path('yascms:uploads/pages/' ~ each_attachment.real_name) }}">{{ each_attachment.original_name }}</a></li>
+	        <li><a href="{{ request.static_path('yascms:uploads/pages/' ~ each_attachment.real_name) }}" title="附件{{ each_attachment.original_name }}" aria-label="附件{{ each_attachment.original_name }}">{{ each_attachment.original_name }}</a></li>
 	      {% endfor %}
 	    </ul>
           </div>

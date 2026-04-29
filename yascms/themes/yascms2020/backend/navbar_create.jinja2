@@ -145,7 +145,7 @@
           $.each(data, function (key, val) {
             page_html_list.push(`<div class="form-group form-check">
                                 <input class="form-check-input" type="radio" name="page_id" id="page_id_${val['id']}" value="${val['id']}">
-                                <label class="form-check-label" for="page_id_${val['id']}"><a href="${val['url']}" target="_blank">${val['title']}</a></label></div>`);
+                                <label class="form-check-label" for="page_id_${val['id']}"><a href="${val['url']}" target="_blank" rel="noopener noreferrer" title="${val['title']} (另開新視窗)">${val['title']}</a></label></div>`);
           });
           $('#modal-content').html(page_html_list.join(''));
           $('#modal-loading-icon').hide();
@@ -170,7 +170,7 @@
         case 2:
           $('#link_type').text('自訂網址');
           let custom_url = $('#url').val();
-          $('#link_target').html(`<a href="${custom_url}" target="_blank">${custom_url}</a>`);
+          $('#link_target').html(`<a href="${custom_url}" target="_blank" rel="noopener noreferrer" title="${custom_url} (另開新視窗)">${custom_url}</a>`);
           $('#pageModal').modal('hide');
           break;
       }
