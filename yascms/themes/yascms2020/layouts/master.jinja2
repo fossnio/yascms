@@ -9,7 +9,10 @@
         {% block banner %}{% endblock banner %}
         {% block successful_flash %}{% endblock successful_flash %}
         {% block failed_flash %}{% endblock failed_flash %}
-        {% block content %}{% endblock content %}
+        <main id="main-content" tabindex="-1" aria-label="中央內容區塊">
+          <a class="accesskey-marker" href="#main-content" accesskey="C" title="Alt+C：中央內容區塊，為本頁主要內容區。">:::</a>
+          {% block content %}{% endblock content %}
+        </main>
         {% block footer %}{% include 'footer.jinja2' %}{% endblock footer%}
       </div>
     </div>

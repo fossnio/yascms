@@ -57,3 +57,20 @@ article, .main-content p, .table td {
 .container-fluid {
     overflow-x: hidden;
 }
+
+.accesskey-marker {
+    display: inline-block;
+    margin-bottom: 0 !important;
+    color: #0056b3;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.accesskey-marker-light {
+    color: #ffffff;
+}
+
+.accesskey-marker:focus {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+}
