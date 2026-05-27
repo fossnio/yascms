@@ -112,5 +112,5 @@ class TelExtEditView:
                 return HTTPFound(self.request.route_url('backend_telext_list'))
             else:
                 logger.error('分機 ID %d 不存在', telext_id)
-                return HTTPNotFound()
+                raise HTTPNotFound()
         return {'form': form}

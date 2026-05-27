@@ -141,7 +141,7 @@ class NavbarEditView:
                     self.request.session.flash(msg, 'fail')
         else:
             logger.error('找不到導覽列 ID %d', navbar_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()
         return {'form': form,
                 'navbar_trees': generate_navbar_trees(self.request, type='intermediate', excluded_id=navbar_id),
                 'NavbarType': NavbarType}

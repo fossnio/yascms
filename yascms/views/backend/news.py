@@ -84,9 +84,9 @@ class NewsListView:
         search_value = sanitize_input(self.request.GET.get('v', ''), str, '')
         if search_key.strip() != '':
             if search_key not in ('publisher', 'title', 'content'):
-                return HTTPNotFound()
+                raise HTTPNotFound()
             if search_value.strip() == '':
-                return HTTPNotFound()
+                raise HTTPNotFound()
         news_list = DAL.get_backend_news_list(page_number, quantity_per_page, category_id, search_key, search_value)
         return {'news_list': news_list,
                 'today': datetime.date.today(),
@@ -124,7 +124,7 @@ class NewsDeleteView:
             self.request.session.flash(msg, 'success')
         else:
             logger.error('找不到最新消息 ID %d', news_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()
         return HTTPFound(self.request.route_url('backend_news_list'))
 
 
@@ -208,7 +208,7 @@ class NewsEditView:
                 return HTTPFound(self.request.route_url('backend_news_list'))
             else:
                 logger.error('找不到最新消息 ID %d', news_id)
-                return HTTPNotFound()
+                raise HTTPNotFound()
         return {'form': form}
 
 
@@ -304,7 +304,7 @@ class NewsCategoryEditView:
             return {'form': form}
         else:
             logger.error('找不到最新消息分類 ID %d', news_category_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()
 
     @view_config(request_method='POST')
     def post_view(self):
@@ -323,4 +323,4 @@ class NewsCategoryEditView:
                 return {'form': form}
         else:
             logger.error('找不到最新消息分類 ID %d', news_category_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()

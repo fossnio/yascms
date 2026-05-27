@@ -50,7 +50,7 @@ def oauth2_provider_login_factory(request, provider_name, provider_config):
     if provider_name == 'google':
         return oauth2_google_login_factory(request, provider_name, provider_config)
     logger.error('找不到 OAuth2 provider %s', provider_name)
-    return HTTPNotFound()
+    raise HTTPNotFound()
 
 
 @view_config(route_name='oauth2_provider_login')
@@ -116,7 +116,7 @@ def oauth2_provider_callback_factory(request, provider_name, provider_config):
     if provider_name == 'google':
         return oauth2_google_callback_factory(request, provider_name, provider_config)
     logger.error('找不到 OAuth2 provider %s 的 callback', provider_name)
-    return HTTPNotFound()
+    raise HTTPNotFound()
 
 
 @view_config(route_name='oauth2_provider_callback')
@@ -129,4 +129,4 @@ def oauth2_provider_callback_view(request):
 
         return oauth2_provider_callback_factory(request, provider_name, oauth2_integration_config[provider_name])
     else:
-        return HTTPNotFound()
+        raise HTTPNotFound()

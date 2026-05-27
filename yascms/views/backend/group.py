@@ -127,7 +127,7 @@ class GroupEditView:
                     'group_trees': generate_group_trees()}
         else:
             logger.error('找不到群組 ID %d', group_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()
         return HTTPFound(location=self.request.route_url('backend_group_list'))
 
     @view_config(request_method='POST')
@@ -154,7 +154,7 @@ class GroupEditView:
                     self.request.session.flash(msg, 'fail')
             else:
                 logger.error('找不到群組 ID %d', group_id)
-                return HTTPNotFound()
+                raise HTTPNotFound()
         return {'form': form,
                 'group_trees': generate_group_trees()}
 
@@ -202,5 +202,5 @@ class GroupDeleteView:
             return HTTPFound(location=self.request.route_url('backend_group_list'))
         else:
             logger.error('找不到群組 ID %d', group_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()
 

@@ -15,13 +15,13 @@ def news_list_view(request):
     request.override_renderer = f'themes/{request.effective_theme_name}/frontend/news_list.jinja2'
     quantity_per_page = sanitize_input(request.GET.get('q', 20), int, 20)
     if not (PageSize.MIN <= quantity_per_page < PageSize.MAX):
-        return HTTPNotFound()
+        raise HTTPNotFound()
     category_id = sanitize_input(request.GET.get('c'), int, None)
     if (category_id is not None) and not (LimitSize.MIN <= category_id < LimitSize.MAX):
-        return HTTPNotFound()
+        raise HTTPNotFound()
     page_number = sanitize_input(request.GET.get('p', 1), int, 1)
     if not (LimitSize.MIN <= page_number < LimitSize.MAX):
-        return HTTPNotFound()
+        raise HTTPNotFound()
 
     news_list = DAL.get_frontend_news_list(page_number=page_number,
                                            quantity_per_page=quantity_per_page,
@@ -49,4 +49,4 @@ def news_get_view(request):
                 'NavbarType': NavbarType,
                 'news': news}
     else:
-        return HTTPNotFound()
+        raise HTTPNotFound()

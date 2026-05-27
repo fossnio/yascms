@@ -53,7 +53,7 @@ class OAuth2IntegrationEditView:
             return {'provider_config': oauth_integration_config[provider_name]}
         else:
             logger.error('找不到 Provider %s', provider_name)
-            return HTTPNotFound()
+            raise HTTPNotFound()
 
     @view_config(request_method='POST')
     def post_view(self):
@@ -78,4 +78,4 @@ class OAuth2IntegrationEditView:
             return HTTPFound(location=self.request.route_url('backend_oauth2_integration_list'))
         else:
             logger.error('找不到 OAuth2 Provider %s', provider_name)
-            return HTTPNotFound()
+            raise HTTPNotFound()

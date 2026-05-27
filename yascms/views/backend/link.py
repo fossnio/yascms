@@ -110,7 +110,7 @@ class LinkDeleteView:
             return HTTPFound(self.request.route_url('backend_link_list'))
         else:
             logger.error('找不到好站連結 ID %d', link_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()
 
 
 @view_defaults(route_name='backend_link_edit',
@@ -173,7 +173,7 @@ class LinkEditView:
                 return HTTPFound(self.request.route_url('backend_link_list'))
             else:
                 logger.error('找不到好站連結 ID %d', link_id)
-                return HTTPNotFound()
+                raise HTTPNotFound()
         return {'form': form}
 
 
@@ -266,7 +266,7 @@ class LinkCategoryEditView:
             return {'form': form}
         else:
             logger.error('找不到好站連結分類 ID %d', link_category_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()
 
     @view_config(request_method='POST')
     def post_view(self):
@@ -285,4 +285,4 @@ class LinkCategoryEditView:
                 return {'form': form}
         else:
             logger.error('找不到好站連結分類 ID %d', link_category_id)
-            return HTTPNotFound()
+            raise HTTPNotFound()

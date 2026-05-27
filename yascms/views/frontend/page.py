@@ -15,4 +15,4 @@ def page_get_view(request):
                 'page': page,
                 'NavbarType': NavbarType}
     else:
-        return HTTPNotFound()
+        raise HTTPNotFound()
